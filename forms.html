@@ -68,16 +68,33 @@
 
     <h1>Testing Out Inputs</h1>
     <form name="testing-inputs" id="input-test" method="get">
+        <!--
+            A fieldset is an area in your form where you put inputs that are more related to each other
+            than they are related to other inputs in the form (i.e., a list of travel items is more
+            related to each other than the country the person is recommending)
+
+            form is an important attribute to line the fieldset to the form it is related to.
+                    -->
         <fieldset>
+            <!--
+                A legend describes how the inputs inside the fieldset are all related.
+            -->
             <legend>Inputs:</legend>
             <label for="test-button">Testing Buttons</label>
             <input type="button" name="button-test" id="test-button" />
 
             <br />
 
-            <label for="test-checkbox">Testing Checkboxes</label>
-            <input type="checkbox" name="checkbox-test" id="test-checkbox" />
+            <!--
+                This is a checkbox input. Note, this is an input where the input typically comes
+                before the label.
 
+                type="checkbox", name, and id are all required. The value attribute is also required 
+                and provides its value to the server if the user checks that box and submits the form.
+                In this case, what would be passed to the server is checkbox-test=check.
+            -->
+            <input type="checkbox" name="checkbox-test" id="test-checkbox" value="check" />
+            <label for="test-checkbox">Testing Checkboxes</label>
             <br />
         
             <label for="test-email">Testing Emails</label>
@@ -94,25 +111,48 @@
             <input type="password" name="password-test" id="test-password" />
 
             <br />
+            <br />
 
-            <label for="test-radio">Testing Radios</label>
-            <input type="radio" name="radio-test" id="test-radio" />
-            <input type="radio" name="radio-test" id="test-radio" />
+            <fieldset form="input-test">
+                <legend>Testing Radios</legend>
+                <!--
+                    This is a radio button input, which are good when you want the user
+                    to select one option from a list of options
+
+                    name, id, and value are all required attributes. The value should represent
+                    to the choice the user has selected. Note, most importantly, the name attribute
+                    for each related radio button should be exactly the same.
+
+                    This is also an input where the label typically shows up after the input.
+                -->
+                <input type="radio" name="radio-test" id="test-radio" />
+                <label for="test-radio">radio 1</label>
+                <br />
+                <input type="radio" name="radio-test" id="test-radio2" />
+                <label for="test-radio">radio 2</label>
+                <br />
+                <input type="radio" name="radio-test" id="test-radio3" />
+                <label for="test-radio">radio 3</label>
+            </fieldset>
 
             <br />
 
             <label for="test-reset">Testing Resets</label>
-            <input type="reset" name="reset-test" id="test-reset" />
+            <input type="reset" name="reset-test" id="test-reset" value="Click to clear everything"/>
 
             <br />
             
             <label for="test-sumbit">Testing Submits</label>
-            <input type="submit" name="submit-test" id="test-sumbit" />
+            <input type="submit" name="submit-test" id="test-sumbit" value="Click to give me everything"/>
 
             <br />
 
+            <!--
+                This is a telephone input. type="tel", name, and id, are all required.
+                minlength and maxlength can be good attributed to use for some basic error-checking.
+            -->
             <label for="test-tel">Testing Tels</label>
-            <input type="tel" name="tel-test" id="test-tel" />
+            <input type="tel" name="tel-test" id="test-tel" minlength="14" maxlength="22"/>
 
             <br />
 
@@ -121,21 +161,58 @@
 
             <br />
 
-            <label for="test-select">Select a number:</label>
+            <!--
+                This is a select input which is essentially a drowndown input.
+
+                name and id are the required attributes for a select input.
+                
+                select inputs are widely used but can lead to accessibility issues.
+                If you can accomplish the same thing you want to do with a different
+                type of input (i.e., radio buttons, text-based, etc.), you should use
+                the other method of getting this information.
+            -->
+            <label for="test-select">Select a thing:</label>
             <select name="select-test" id="test-select">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
+                <!-- 
+                    optgroups let you group the options inside your select input.
+                    label is required so that the optgroup display what the category is
+                    for the inputs that are inside that group.
+                -->
+                <optgroup label="numbers">
+                    <!--
+                        The option tag is the actual option that a user can select.
+                        It requires the value attribute for when the selection gets sent to
+                        the server.
+                    -->
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </optgroup>
+                <optgroup label="letters">
+                    <option value="a">a</option>
+                    <option value="b">b</option>
+                    <option value="c">c</option>
+                    <option value="d">d</option>
+                    <option value="e">e</option>
+                </optgroup>
             </select>
 
             <br />
 
+            <!--
+                This is a textarea input. This allows a user to enter multiple lines of information
+                for a form.
+                
+                name and id are required attributes
+                High recommended attributes are rows and cols. rows defines the number of lines a
+                user can type before a scrollbar appears. cols defines the number of characters across
+                a user can type befor their input goes to the next line.
+            -->
             <label for="test-textarea">Say something:</label>
             <br /> 
-            <textarea name="textarea-test" id="test-textarea" rows="5" cols="33">
-            </textarea>
+            <textarea name="textarea-test" id="test-textarea" rows="5" cols="33"></textarea>
         </fieldset>
     </form>
 
